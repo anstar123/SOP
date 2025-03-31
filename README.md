@@ -1,176 +1,87 @@
 # Connect4 AI Agent
 
-An advanced AI agent implementation for the Connect4 game using multiple search strategies and optimization techniques.
+A smart computer player for the Connect4 game that can play using different strategies.
 
-## Description
+## What is this?
 
-This project focuses on developing and training an AI agent to play Connect4 using various artificial intelligence techniques. The agent implements multiple strategies including Minimax with Alpha-Beta pruning, Hill Climbing, and Simulated Annealing. The agent is designed to play against human opponents in an existing Connect4 game implementation.
+This is a computer program that can play Connect4 against you. It uses different ways of thinking (called strategies) to make its moves. The computer can play using three different strategies:
+- Minimax (very smart)
+- Hill Climbing (medium difficulty)
+- Simulated Annealing (changes difficulty)
 
-## AI Features
+## How to Set Up
 
-- **Multiple Search Strategies**:
-  - Minimax with Alpha-Beta pruning
-  - Hill Climbing optimization
-  - Simulated Annealing for global optimization
-
-- **Advanced Evaluation Function**:
-  - Center control evaluation
-  - Winning potential assessment
-  - Opponent blocking strategy
-  - Piece connectivity analysis
-
-- **Optimization Techniques**:
-  - Alpha-Beta pruning for improved search efficiency
-  - Configurable search depth
-  - Temperature-based simulated annealing
-  - Adaptive hill climbing
-
-## Prerequisites
-
-- Python 3.x
-- Pygame (for the game interface)
-- NumPy (for efficient array operations)
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/Connect4_v1.0.git
-cd Connect4_v1.0
-```
-
-2. Install the required dependencies:
+1. Make sure you have Python installed on your computer
+2. Install the needed programs:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Project Structure
+## How to Play
 
-- `enhanced_ai_agent.py`: Core AI implementation with multiple strategies
-- `board.py`: Game board interface for the AI agent
-- `main.py`: Game interface and AI integration
-- `requirements.txt`: Project dependencies
-
-## AI Agent Implementation Details
-
-### Search Strategies
-
-1. **Minimax with Alpha-Beta Pruning**
-   - Implements depth-limited minimax search
-   - Uses alpha-beta pruning for optimization
-   - Configurable search depth
-
-2. **Hill Climbing**
-   - Local search optimization
-   - Iterative improvement of move selection
-   - Prevents getting stuck in local optima
-
-3. **Simulated Annealing**
-   - Temperature-based exploration
-   - Allows occasional worse moves to escape local optima
-   - Adaptive cooling schedule
-
-### Evaluation Function Components
-
-1. **Center Control**
-   - Evaluates control of center columns
-   - Weighted importance for strategic advantage
-
-2. **Winning Potential**
-   - Identifies immediate winning opportunities
-   - Prioritizes winning moves
-
-3. **Opponent Blocking**
-   - Prevents opponent's winning moves
-   - Strategic defensive play
-
-4. **Connectivity Analysis**
-   - Evaluates piece connections
-   - Considers multiple directions (horizontal, vertical, diagonal)
-
-## Game Manual
-
-### Overview
-Connect4 is a two-player strategy game where players take turns dropping colored discs into a vertical grid. The objective is to connect four discs of the same color horizontally, vertically, or diagonally before the opponent does.
-
-### Game Rules
-1. **Board Setup**
-   - 6 rows × 7 columns grid
-   - Empty at the start
-   - Players use different colored discs (typically red and yellow)
-
-2. **Gameplay**
-   - Players take turns dropping one disc at a time
-   - Discs are placed in the lowest available position in the chosen column
-   - Players cannot place discs in full columns
-   - The game continues until a winner is determined or the board is full
-
-3. **Winning Conditions**
-   - Connect four discs of the same color in any of these patterns:
-     - Horizontal (4 discs in a row)
-     - Vertical (4 discs in a column)
-     - Diagonal (4 discs diagonally)
-   - First player to achieve this wins
-   - If the board fills up without a winner, the game is a draw
-
-4. **Controls**
-   - Use mouse to select a column
-   - Click on the desired column to drop your disc
-   - The AI will automatically make its move after yours
-
-### Tips for Playing Against the AI
-1. **Strategic Play**
-   - Control the center columns when possible
-   - Create multiple winning threats simultaneously
-   - Block the AI's potential winning moves
-
-2. **Common Strategies**
-   - Build from the bottom up
-   - Create diagonal patterns
-   - Force the AI to block your moves
-   - Look for opportunities to create multiple winning threats
-
-3. **Difficulty Levels**
-   - The AI uses different strategies that can be selected:
-     - Minimax: Most challenging, uses perfect play
-     - Hill Climbing: Medium difficulty, uses local optimization
-     - Simulated Annealing: Varies in difficulty based on temperature
-
-## Usage
-
-1. Run the game with the AI agent:
+1. Start the game:
 ```bash
 python main.py
 ```
 
-2. Select your preferred AI strategy in the game settings:
-   - Minimax (default)
-   - Hill Climbing
-   - Simulated Annealing
+2. Choose who goes first:
+   - Press 'A' to let the computer go first
+   - Press 'S' to go first yourself
 
-3. Play against the AI:
-   - Use mouse to select columns
-   - AI will automatically respond with its chosen strategy
+3. During the game:
+   - Click on any column to drop your piece
+   - The computer will automatically make its move
+   - You can change the computer's strategy anytime:
+     - Press '1' for Minimax (hardest)
+     - Press '2' for Hill Climbing (medium)
+     - Press '3' for Simulated Annealing (changes difficulty)
+   - Press 'R' to restart the game
 
-## Performance
+## Game Rules
 
-The AI agent demonstrates strong performance through:
-- Efficient move evaluation
-- Strategic decision making
-- Multiple optimization techniques
-- Adaptive play style
+1. The game board has 6 rows and 7 columns
+2. You and the computer take turns dropping pieces
+3. Pieces fall to the lowest available spot in the column
+4. First player to connect 4 pieces in a row (horizontally, vertically, or diagonally) wins
+5. If the board fills up with no winner, it's a draw
 
-## Contributing
+## Tips to Win
 
-Feel free to submit issues and enhancement requests for the AI agent implementation!
+1. Try to control the middle columns
+2. Look for ways to create multiple winning chances at once
+3. Block the computer's winning moves
+4. Build your pieces from the bottom up
+5. Try to create diagonal patterns
 
-## License
+## How the Computer Thinks
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+The computer uses different ways to make its moves:
 
-## Acknowledgments
+1. **Minimax Strategy**
+   - Looks ahead several moves
+   - Tries to make the best possible move
+   - Hardest to beat
 
-- Connect4 game implementation (external source)
-- Pygame for the game interface
-- NumPy for efficient array operations
-- AI/ML community for search and optimization algorithms 
+2. **Hill Climbing Strategy**
+   - Makes moves that improve its position
+   - Medium difficulty
+   - Can get stuck in local solutions
+
+3. **Simulated Annealing Strategy**
+   - Sometimes makes random moves
+   - Difficulty changes during the game
+   - Can surprise you with unexpected moves
+
+## Files in the Project
+
+- `main.py`: The main game file
+- `board.py`: Handles the game board
+- `enhanced_ai_agent.py`: Contains the computer's thinking strategies
+- `requirements.txt`: Lists the programs needed to run the game
+
+## Thanks
+
+- The Connect4 game idea
+- Pygame for making the game look nice
+- NumPy for helping the computer think faster
+- The AI community for the strategies used 
