@@ -1,21 +1,35 @@
-# Connect4 Game with AI
+# Connect4 AI Agent
 
-A Python implementation of the classic Connect4 game featuring an AI opponent using the Minimax algorithm with Alpha-Beta pruning.
+An advanced AI agent implementation for the Connect4 game using multiple search strategies and optimization techniques.
 
 ## Description
 
-This project implements the Connect4 game where players take turns dropping colored discs into a vertical grid. The objective is to connect four discs of the same color horizontally, vertically, or diagonally before the opponent does. The game features:
+This project focuses on developing and training an AI agent to play Connect4 using various artificial intelligence techniques. The agent implements multiple strategies including Minimax with Alpha-Beta pruning, Hill Climbing, and Simulated Annealing. The agent is designed to play against human opponents in an existing Connect4 game implementation.
 
-- A graphical user interface using Pygame
-- An AI opponent using the Minimax algorithm with Alpha-Beta pruning
-- Human vs AI gameplay
-- Visual feedback for moves and game state
+## AI Features
+
+- **Multiple Search Strategies**:
+  - Minimax with Alpha-Beta pruning
+  - Hill Climbing optimization
+  - Simulated Annealing for global optimization
+
+- **Advanced Evaluation Function**:
+  - Center control evaluation
+  - Winning potential assessment
+  - Opponent blocking strategy
+  - Piece connectivity analysis
+
+- **Optimization Techniques**:
+  - Alpha-Beta pruning for improved search efficiency
+  - Configurable search depth
+  - Temperature-based simulated annealing
+  - Adaptive hill climbing
 
 ## Prerequisites
 
 - Python 3.x
-- Pygame
-- NumPy
+- Pygame (for the game interface)
+- NumPy (for efficient array operations)
 
 ## Installation
 
@@ -30,53 +44,77 @@ cd Connect4_v1.0
 pip install -r requirements.txt
 ```
 
-## How to Run the Game
+## Project Structure
 
-1. Navigate to the project directory:
-```bash
-cd Connect4_v1.0
-```
+- `enhanced_ai_agent.py`: Core AI implementation with multiple strategies
+- `board.py`: Game board interface for the AI agent
+- `main.py`: Game interface and AI integration
+- `requirements.txt`: Project dependencies
 
-2. Run the main game file:
+## AI Agent Implementation Details
+
+### Search Strategies
+
+1. **Minimax with Alpha-Beta Pruning**
+   - Implements depth-limited minimax search
+   - Uses alpha-beta pruning for optimization
+   - Configurable search depth
+
+2. **Hill Climbing**
+   - Local search optimization
+   - Iterative improvement of move selection
+   - Prevents getting stuck in local optima
+
+3. **Simulated Annealing**
+   - Temperature-based exploration
+   - Allows occasional worse moves to escape local optima
+   - Adaptive cooling schedule
+
+### Evaluation Function Components
+
+1. **Center Control**
+   - Evaluates control of center columns
+   - Weighted importance for strategic advantage
+
+2. **Winning Potential**
+   - Identifies immediate winning opportunities
+   - Prioritizes winning moves
+
+3. **Opponent Blocking**
+   - Prevents opponent's winning moves
+   - Strategic defensive play
+
+4. **Connectivity Analysis**
+   - Evaluates piece connections
+   - Considers multiple directions (horizontal, vertical, diagonal)
+
+## Usage
+
+1. Run the game with the AI agent:
 ```bash
 python main.py
 ```
 
-3. Game Controls:
-   - Use the mouse to click on the column where you want to drop your disc
-   - The AI will automatically make its move after yours
-   - The game will announce the winner when someone connects four discs
+2. Select your preferred AI strategy in the game settings:
+   - Minimax (default)
+   - Hill Climbing
+   - Simulated Annealing
 
-## Project Structure
+3. Play against the AI:
+   - Use mouse to select columns
+   - AI will automatically respond with its chosen strategy
 
-- `main.py`: Contains the main game loop and UI implementation
-- `board.py`: Implements the game board logic and move validation
-- `enhanced_ai_agent.py`: Contains the AI implementation using Minimax with Alpha-Beta pruning
-- `requirements.txt`: Lists all project dependencies
+## Performance
 
-## Features
-
-- Interactive graphical interface
-- AI opponent using Minimax algorithm with Alpha-Beta pruning
-- Real-time game state updates
-- Win detection for all possible winning combinations
-- Visual feedback for player moves and game status
-
-## Game Rules
-
-1. Players take turns dropping colored discs into a 6x7 grid
-2. The first player to connect four discs of their color wins
-3. Winning combinations can be:
-   - Horizontal (4 discs in a row)
-   - Vertical (4 discs in a column)
-   - Diagonal (4 discs diagonally)
-4. The game ends when:
-   - A player wins
-   - The board is full (draw)
+The AI agent demonstrates strong performance through:
+- Efficient move evaluation
+- Strategic decision making
+- Multiple optimization techniques
+- Adaptive play style
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+Feel free to submit issues and enhancement requests for the AI agent implementation!
 
 ## License
 
@@ -84,6 +122,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Pygame library for the graphical interface
+- Connect4 game implementation (external source)
+- Pygame for the game interface
 - NumPy for efficient array operations
-- Connect4 game concept by Milton Bradley 
+- AI/ML community for search and optimization algorithms 
