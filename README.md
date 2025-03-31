@@ -1,73 +1,89 @@
-# Connect4 AI Agent
+# Connect4 Game with AI
 
-A smart computer player for the Connect4 game that can play using different strategies.
+A Python implementation of the classic Connect4 game featuring an AI opponent with multiple difficulty levels.
 
-## What is this?
+## Features
 
-This is a computer program that can play Connect4 against you. It uses different ways of thinking (called strategies) to make its moves. The computer can play using three different strategies:
-- Minimax (very smart)
-- Hill Climbing (medium difficulty)
-- Simulated Annealing (changes difficulty)
+- Classic Connect4 gameplay
+- AI opponent with three difficulty levels:
+  - Easy: Uses Hill Climbing algorithm
+  - Medium: Uses Simulated Annealing algorithm
+  - Hard: Uses Minimax algorithm with Alpha-Beta pruning
+- Option to choose who makes the first move
+- Modern Pygame-based GUI
+- A* inspired heuristic evaluation for AI decision making
 
-## How to Set Up
+## Requirements
 
-1. Make sure you have Python installed on your computer
-2. Install the needed programs:
+- Python 3.x
+- Pygame
+- NumPy
+
+## Installation
+
+1. Clone the repository:
 ```bash
-pip install numpy==1.24.3
-pip install pygame==2.5.0
+git clone <repository-url>
+```
+
+2. Install the required packages:
+```bash
+pip install pygame numpy
 ```
 
 ## How to Play
 
-1. Start the game:
+1. Run the game:
 ```bash
 python main.py
 ```
 
-2. Choose who goes first:
-   - Press 'A' to let the computer go first
-   - Press 'S' to go first yourself
+2. Select difficulty level:
+   - Press 1 for Easy
+   - Press 2 for Medium
+   - Press 3 for Hard
 
-3. During the game:
-   - Click on any column to drop your piece
-   - The computer will automatically make its move
-   - You can change the computer's strategy anytime:
-     - Press '1' for Minimax (hardest)
-     - Press '2' for Hill Climbing (medium)
-     - Press '3' for Simulated Annealing (changes difficulty)
-   - Press 'R' to restart the game at any point of game or after the game ends
+3. Choose who makes the first move:
+   - Press A for AI to move first
+   - Press S for Human to move first
 
-## Game Rules
+4. Game Controls:
+   - Click on a column to drop your piece
+   - Press R to restart the game
+   - Close window to quit
 
-1. The game board has 6 rows and 7 columns
-2. You and the computer take turns dropping pieces
-3. Pieces fall to the lowest available spot in the column
-4. First player to connect 4 pieces in a row (horizontally, vertically, or diagonally) wins
-5. If the board fills up with no winner, it's a draw
+## AI Implementation
 
-## How the Computer Thinks
+The AI uses different algorithms based on the selected difficulty level:
 
-The computer uses different ways to make its moves:
+### Easy Mode (Hill Climbing)
+- Uses local search to find good moves
+- Makes decisions based on immediate board evaluation
+- Less optimal but faster decision making
 
-1. **Minimax Strategy**
-   - Looks ahead several moves
-   - Tries to make the best possible move
-   - Hardest to beat
+### Medium Mode (Simulated Annealing)
+- Uses probabilistic approach to explore the solution space
+- Can accept worse moves to escape local optima
+- Balanced between optimality and speed
 
-2. **Hill Climbing Strategy**
-   - Makes moves that improve its position
-   - Medium difficulty
-   - Can get stuck in local solutions
+### Hard Mode (Minimax with Alpha-Beta Pruning)
+- Uses complete game tree search
+- Implements alpha-beta pruning for efficiency
+- Makes the most optimal moves possible within its depth limit
 
-3. **Simulated Annealing Strategy**
-   - Sometimes makes random moves
-   - Difficulty changes during the game
-   - Can surprise you with unexpected moves
+### Heuristic Evaluation
+The AI uses an A* inspired heuristic function that considers:
+- Center control (weight: 3)
+- Winning potential (weight: 10)
+- Opponent blocking (weight: 8)
+- Piece connectivity (weight: 5)
 
-## Files in the Project
+## Project Structure
 
-- `main.py`: The main game file
-- `board.py`: Handles the game board
-- `enhanced_ai_agent.py`: Contains the computer's thinking strategies
-- `requirements.txt`: Lists the programs needed to run the game
+- `main.py`: Main game loop and GUI implementation
+- `board.py`: Board logic and game rules
+- `ai_agent.py`: AI implementation with different strategies
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
