@@ -88,6 +88,54 @@ pip install -r requirements.txt
    - Evaluates piece connections
    - Considers multiple directions (horizontal, vertical, diagonal)
 
+## Game Manual
+
+### Overview
+Connect4 is a two-player strategy game where players take turns dropping colored discs into a vertical grid. The objective is to connect four discs of the same color horizontally, vertically, or diagonally before the opponent does.
+
+### Game Rules
+1. **Board Setup**
+   - 6 rows × 7 columns grid
+   - Empty at the start
+   - Players use different colored discs (typically red and yellow)
+
+2. **Gameplay**
+   - Players take turns dropping one disc at a time
+   - Discs are placed in the lowest available position in the chosen column
+   - Players cannot place discs in full columns
+   - The game continues until a winner is determined or the board is full
+
+3. **Winning Conditions**
+   - Connect four discs of the same color in any of these patterns:
+     - Horizontal (4 discs in a row)
+     - Vertical (4 discs in a column)
+     - Diagonal (4 discs diagonally)
+   - First player to achieve this wins
+   - If the board fills up without a winner, the game is a draw
+
+4. **Controls**
+   - Use mouse to select a column
+   - Click on the desired column to drop your disc
+   - The AI will automatically make its move after yours
+
+### Tips for Playing Against the AI
+1. **Strategic Play**
+   - Control the center columns when possible
+   - Create multiple winning threats simultaneously
+   - Block the AI's potential winning moves
+
+2. **Common Strategies**
+   - Build from the bottom up
+   - Create diagonal patterns
+   - Force the AI to block your moves
+   - Look for opportunities to create multiple winning threats
+
+3. **Difficulty Levels**
+   - The AI uses different strategies that can be selected:
+     - Minimax: Most challenging, uses perfect play
+     - Hill Climbing: Medium difficulty, uses local optimization
+     - Simulated Annealing: Varies in difficulty based on temperature
+
 ## Usage
 
 1. Run the game with the AI agent:
