@@ -51,7 +51,7 @@ class Board:
                     self.board[row + 2][col] == self.board[row + 3][col]):
                     return self.board[row][col]
         
-        # Check diagonal (positive slope)
+        # Check diagonal (+ve slope)
         for row in range(3, self.rows):
             for col in range(self.cols - 3):
                 if (self.board[row][col] != 0 and
@@ -59,7 +59,7 @@ class Board:
                     self.board[row - 2][col + 2] == self.board[row - 3][col + 3]):
                     return self.board[row][col]
         
-        # Check diagonal (negative slope)
+        # Check diagonal (-ve slope)
         for row in range(self.rows - 3):
             for col in range(self.cols - 3):
                 if (self.board[row][col] != 0 and
