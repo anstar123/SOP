@@ -14,7 +14,8 @@ This is a computer program that can play Connect4 against you. It uses different
 1. Make sure you have Python installed on your computer
 2. Install the needed programs:
 ```bash
-pip install -r requirements.txt
+pip install numpy==1.24.3
+pip install pygame==2.5.0
 ```
 
 ## How to Play
@@ -35,7 +36,7 @@ python main.py
      - Press '1' for Minimax (hardest)
      - Press '2' for Hill Climbing (medium)
      - Press '3' for Simulated Annealing (changes difficulty)
-   - Press 'R' to restart the game
+   - Press 'R' to restart the game at any point of game or after the game ends
 
 ## Game Rules
 
@@ -44,14 +45,6 @@ python main.py
 3. Pieces fall to the lowest available spot in the column
 4. First player to connect 4 pieces in a row (horizontally, vertically, or diagonally) wins
 5. If the board fills up with no winner, it's a draw
-
-## Tips to Win
-
-1. Try to control the middle columns
-2. Look for ways to create multiple winning chances at once
-3. Block the computer's winning moves
-4. Build your pieces from the bottom up
-5. Try to create diagonal patterns
 
 ## How the Computer Thinks
 
@@ -78,10 +71,3 @@ The computer uses different ways to make its moves:
 - `board.py`: Handles the game board
 - `enhanced_ai_agent.py`: Contains the computer's thinking strategies
 - `requirements.txt`: Lists the programs needed to run the game
-
-## Thanks
-
-- The Connect4 game idea
-- Pygame for making the game look nice
-- NumPy for helping the computer think faster
-- The AI community for the strategies used 
