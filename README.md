@@ -83,7 +83,3 @@ The AI uses an A* inspired heuristic function that considers:
 - `main.py`: Main game loop and GUI implementation
 - `board.py`: Board logic and game rules
 - `ai_agent.py`: AI implementation with different strategies
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
