@@ -3,14 +3,11 @@
 A Python implementation of the classic Connect4 game featuring an AI opponent with multiple difficulty levels.
 
 ## Features
-
-- Classic Connect4 gameplay
 - AI opponent with three difficulty levels:
   - Easy: Uses Hill Climbing algorithm
   - Medium: Uses Simulated Annealing algorithm
   - Hard: Uses Minimax algorithm with Alpha-Beta pruning
 - Option to choose who makes the first move
-- Modern Pygame-based GUI
 - A* inspired heuristic evaluation for AI decision making
 
 ## Requirements
@@ -18,25 +15,6 @@ A Python implementation of the classic Connect4 game featuring an AI opponent wi
 - Python 3.x
 - Pygame
 - NumPy
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-```
-
-2. Install the required packages:
-```bash
-pip install pygame numpy
-```
-
-## How to Play
-
-1. Run the game:
-```bash
-python main.py
-```
 
 2. Select difficulty level:
    - Press 1 for Easy
