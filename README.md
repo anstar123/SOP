@@ -16,6 +16,25 @@ A Python implementation of the classic Connect4 game featuring an AI opponent wi
 - Pygame
 - NumPy
 
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/arbitcoper/Connect4.git
+```
+
+2. Install the required packages:
+```bash
+pip install pygame numpy
+```
+
+## How to Play
+
+1. Run the game:
+```bash
+python main.py
+```
+
 2. Select difficulty level:
    - Press 1 for Easy
    - Press 2 for Medium
