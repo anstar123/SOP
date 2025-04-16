@@ -1,360 +1,311 @@
-Database Procedures, Functions, and Triggers
-===========================================
+# Indian Railway Ticket Reservation System
 
-1. Procedures
-------------
+## Database Objects Documentation
 
-a) book_ticket
-Purpose: Handles the ticket booking process
+### Procedures
+
+#### 1. book_ticket
 ```sql
 CREATE PROCEDURE book_ticket(
-    IN p_passenger_id INT,
-    IN p_train_id INT,
+    IN p_train_no INT,
+    IN p_class VARCHAR(20),
     IN p_journey_date DATE,
-    IN p_source_station_id INT,
-    IN p_destination_station_id INT,
-    IN p_class_id INT
+    IN p_boarding_station VARCHAR(50),
+    IN p_destination_station VARCHAR(50),
+    IN p_passenger_name VARCHAR(100),
+    IN p_age INT,
+    IN p_gender VARCHAR(10),
+    IN p_berth_preference VARCHAR(20)
 )
 BEGIN
-    -- Handles complete ticket booking process
+    -- Implementation details
+    -- Handles ticket booking process including:
+    -- - Seat availability check
+    -- - PNR generation
+    -- - Passenger details insertion
+    -- - Payment processing
+    -- - Status updates (CNF/RAC/WL)
 END;
 ```
 
-b) calculate_cancellation_refund
-Purpose: Calculates refund amount for cancellations
+#### 2. calculate_cancellation_refund
 ```sql
 CREATE PROCEDURE calculate_cancellation_refund(
-    IN p_ticket_id INT,
-    IN p_cancellation_date DATE
+    IN p_pnr_no INT,
+    OUT p_refund_amount DECIMAL(10,2),
+    OUT p_refund_status VARCHAR(20)
 )
 BEGIN
-    -- Calculates refund amount based on cancellation rules
+    -- Implementation details
+    -- Calculates refund amount based on:
+    -- - Time of cancellation
+    -- - Ticket status (CNF/RAC/WL)
+    -- - Journey date
+    -- Updates payment and booking history
 END;
 ```
 
-c) cancel_ticket
-Purpose: Handles ticket cancellation process
+#### 3. cancel_ticket
 ```sql
 CREATE PROCEDURE cancel_ticket(
-    IN p_ticket_id INT,
-    IN p_cancellation_reason VARCHAR(255)
+    IN p_pnr_no INT,
+    OUT p_success BOOLEAN,
+    OUT p_message VARCHAR(200)
 )
 BEGIN
-    -- Handles complete ticket cancellation process
+    -- Implementation details
+    -- Handles ticket cancellation including:
+    -- - Status validation
+    -- - Refund calculation
+    -- - Seat release
+    -- - RAC/WL promotion
 END;
 ```
 
-d) check_pnr_status
-Purpose: Checks PNR status for a ticket
+#### 4. check_seat_availability
 ```sql
-CREATE PROCEDURE check_pnr_status(
-    IN p_pnr_number VARCHAR(20)
-)
-BEGIN
-    -- Returns current status of the ticket
-END;
-```
-
-e) generate_ticket_bill
-Purpose: Generates detailed bill for a ticket
-```sql
-CREATE PROCEDURE generate_ticket_bill(
-    IN p_ticket_id INT
-)
-BEGIN
-    -- Generates itemized bill for the ticket
-END;
-```
-
-f) get_available_seats
-Purpose: Gets available seats for a train
-```sql
-CREATE PROCEDURE get_available_seats(
-    IN p_train_id INT,
+CREATE PROCEDURE check_seat_availability(
+    IN p_train_no INT,
+    IN p_class VARCHAR(20),
     IN p_journey_date DATE,
-    IN p_class_id INT
+    OUT p_available_seats INT,
+    OUT p_available_rac INT,
+    OUT p_waitlist_count INT
 )
 BEGIN
-    -- Returns available seats information
+    -- Implementation details
+    -- Checks current availability status:
+    -- - Confirmed seats
+    -- - RAC seats
+    -- - Waitlist count
 END;
 ```
 
-g) get_busiest_routes
-Purpose: Identifies busiest train routes
+#### 5. generate_pnr
 ```sql
-CREATE PROCEDURE get_busiest_routes(
-    IN p_start_date DATE,
-    IN p_end_date DATE
+CREATE PROCEDURE generate_pnr(
+    OUT p_pnr_no INT
 )
 BEGIN
-    -- Returns busiest routes based on passenger count
+    -- Implementation details
+    -- Generates unique PNR number
+    -- Updates PNR sequence
 END;
 ```
 
-h) get_cancellation_records
-Purpose: Retrieves cancellation records
-```sql
-CREATE PROCEDURE get_cancellation_records(
-    IN p_start_date DATE,
-    IN p_end_date DATE
-)
-BEGIN
-    -- Returns cancellation records with refund status
-END;
-```
-
-i) get_revenue_report
-Purpose: Generates revenue reports
-```sql
-CREATE PROCEDURE get_revenue_report(
-    IN p_start_date DATE,
-    IN p_end_date DATE
-)
-BEGIN
-    -- Generates revenue report for the period
-END;
-```
-
-j) get_train_passengers
-Purpose: Lists train passengers
-```sql
-CREATE PROCEDURE get_train_passengers(
-    IN p_train_id INT,
-    IN p_journey_date DATE
-)
-BEGIN
-    -- Lists passengers for a specific train
-END;
-```
-
-k) get_train_schedule
-Purpose: Retrieves train schedule
+#### 6. get_train_schedule
 ```sql
 CREATE PROCEDURE get_train_schedule(
-    IN p_train_id INT
-)
-BEGIN
-    -- Returns complete train schedule
-END;
-```
-
-l) get_waitlisted_passengers
-Purpose: Lists waitlisted passengers
-```sql
-CREATE PROCEDURE get_waitlisted_passengers(
-    IN p_train_id INT,
+    IN p_train_no INT,
     IN p_journey_date DATE
 )
 BEGIN
-    -- Lists waitlisted passengers
+    -- Implementation details
+    -- Retrieves complete train schedule:
+    -- - Station list
+    -- - Arrival/departure times
+    -- - Platform numbers
 END;
 ```
 
-m) keep_first_7_running_dates
-Purpose: Maintains running dates
+#### 7. update_seat_status
 ```sql
-CREATE PROCEDURE keep_first_7_running_dates()
-BEGIN
-    -- Keeps only next 7 days of running dates
-END;
-```
-
-n) search_trains
-Purpose: Searches available trains
-```sql
-CREATE PROCEDURE search_trains(
-    IN p_source_station VARCHAR(100),
-    IN p_dest_station VARCHAR(100),
-    IN p_journey_date DATE
+CREATE PROCEDURE update_seat_status(
+    IN p_train_no INT,
+    IN p_coach_no VARCHAR(10),
+    IN p_seat_no INT,
+    IN p_journey_date DATE,
+    IN p_status VARCHAR(20),
+    IN p_pnr_no INT
 )
 BEGIN
-    -- Searches trains between stations
+    -- Implementation details
+    -- Updates seat status:
+    -- - Marks seat as booked/available
+    -- - Updates occupancy details
 END;
 ```
 
-o) show_table_counts
-Purpose: Shows table record counts
+#### 8. validate_booking
 ```sql
-CREATE PROCEDURE show_table_counts()
+CREATE PROCEDURE validate_booking(
+    IN p_train_no INT,
+    IN p_class VARCHAR(20),
+    IN p_journey_date DATE,
+    OUT p_valid BOOLEAN,
+    OUT p_message VARCHAR(200)
+)
 BEGIN
-    -- Displays count of records in all tables
+    -- Implementation details
+    -- Validates booking parameters:
+    -- - Train existence
+    -- - Class availability
+    -- - Journey date validity
 END;
 ```
 
-p) update_train_schedules
-Purpose: Updates train schedules
-```sql
-CREATE PROCEDURE update_train_schedules()
-BEGIN
-    -- Updates train schedules
-END;
-```
+### Functions
 
-2. Functions
------------
-
-a) CalculateFare
-Purpose: Calculates the ticket fare based on various factors
+#### 1. calculate_fare
 ```sql
-CREATE FUNCTION CalculateFare(
+CREATE FUNCTION calculate_fare(
+    p_base_fare DECIMAL(10,2),
     p_distance INT,
-    p_class_id INT,
-    p_passenger_type VARCHAR(20)
+    p_class VARCHAR(20)
 ) RETURNS DECIMAL(10,2)
 BEGIN
-    -- Function logic for fare calculation
-    -- Considers distance, class, and passenger type
+    -- Implementation details
+    -- Calculates final fare based on:
+    -- - Base fare
+    -- - Distance
+    -- - Class multiplier
     RETURN calculated_fare;
 END;
 ```
 
-b) CheckSeatAvailability
-Purpose: Checks seat availability for a given train and date
-```sql
-CREATE FUNCTION CheckSeatAvailability(
-    p_train_id INT,
-    p_journey_date DATE,
-    p_class_id INT
-) RETURNS INT
-BEGIN
-    -- Function logic for checking seat availability
-    RETURN available_seats;
-END;
-```
-
-c) calculate_fare
-Purpose: Calculates the fare for a ticket based on distance and class
-```sql
-CREATE FUNCTION calculate_fare(
-    distance INT,
-    class_id INT
-) RETURNS DECIMAL(10,2)
-BEGIN
-    -- Calculates ticket fare based on distance and class
-    RETURN calculated_amount;
-END;
-```
-
-d) calculate_refund
-Purpose: Calculates refund amount for cancelled tickets
-```sql
-CREATE FUNCTION calculate_refund(
-    ticket_id INT,
-    cancellation_date DATE
-) RETURNS DECIMAL(10,2)
-BEGIN
-    -- Calculates refund amount based on cancellation rules
-    RETURN refund_amount;
-END;
-```
-
-e) get_next_running_dates
-Purpose: Gets the next running dates for a train
-```sql
-CREATE FUNCTION get_next_running_dates(
-    train_id INT,
-    start_date DATE
-) RETURNS VARCHAR(255)
-BEGIN
-    -- Returns next running dates for the train
-    RETURN running_dates;
-END;
-```
-
-f) get_rac_number
-Purpose: Generates RAC number for waitlisted tickets
+#### 2. get_rac_number
 ```sql
 CREATE FUNCTION get_rac_number(
-    train_id INT,
-    journey_date DATE
+    p_train_no INT,
+    p_class VARCHAR(20),
+    p_journey_date DATE
 ) RETURNS INT
 BEGIN
-    -- Generates next available RAC number
+    -- Implementation details
+    -- Returns next available RAC number
     RETURN rac_number;
 END;
 ```
 
-g) get_waitlist_number
-Purpose: Generates waitlist number for tickets
+#### 3. get_waitlist_number
 ```sql
 CREATE FUNCTION get_waitlist_number(
-    train_id INT,
-    journey_date DATE
+    p_train_no INT,
+    p_class VARCHAR(20),
+    p_journey_date DATE
 ) RETURNS INT
 BEGIN
-    -- Generates next available waitlist number
+    -- Implementation details
+    -- Returns next available waitlist number
     RETURN waitlist_number;
 END;
 ```
 
-3. Triggers
-----------
+#### 4. is_booking_window_open
+```sql
+CREATE FUNCTION is_booking_window_open(
+    p_journey_date DATE
+) RETURNS BOOLEAN
+BEGIN
+    -- Implementation details
+    -- Checks if booking is allowed for given date
+    RETURN is_open;
+END;
+```
 
-a) update_seat_status_after_ticket_insert
-Purpose: Updates seat status after ticket booking
+#### 5. validate_passenger_age
+```sql
+CREATE FUNCTION validate_passenger_age(
+    p_age INT
+) RETURNS BOOLEAN
+BEGIN
+    -- Implementation details
+    -- Validates passenger age
+    RETURN is_valid;
+END;
+```
+
+### Triggers
+
+#### 1. update_seat_status_after_ticket_insert
 ```sql
 CREATE TRIGGER update_seat_status_after_ticket_insert
 AFTER INSERT ON tickets
 FOR EACH ROW
 BEGIN
-    -- Updates seat status after new ticket booking
+    -- Implementation details
+    -- Updates seat status when new ticket is inserted:
+    -- - Marks seat as booked for CNF
+    -- - Updates RAC count
+    -- - Updates waitlist count
 END;
 ```
 
-b) after_ticket_insert
-Purpose: Handles post-ticket insertion tasks
+#### 2. after_ticket_insert
 ```sql
 CREATE TRIGGER after_ticket_insert
 AFTER INSERT ON tickets
 FOR EACH ROW
 BEGIN
-    -- Performs tasks after ticket insertion
+    -- Implementation details
+    -- Handles post-insert operations:
+    -- - Seat status updates
+    -- - Availability updates
+    -- - Status tracking
 END;
 ```
 
-c) handleCancellation
-Purpose: Manages ticket cancellation process
+#### 3. handleCancellation
 ```sql
 CREATE TRIGGER handleCancellation
 AFTER UPDATE ON tickets
 FOR EACH ROW
 BEGIN
-    -- Handles ticket cancellation process
+    -- Implementation details
+    -- Manages cancellation process:
+    -- - Refund calculation
+    -- - Seat release
+    -- - RAC/WL promotion
+    -- - Payment updates
 END;
 ```
 
-d) after_ticket_cancel
-Purpose: Performs post-cancellation tasks
+#### 4. after_ticket_cancel
 ```sql
 CREATE TRIGGER after_ticket_cancel
 AFTER UPDATE ON tickets
 FOR EACH ROW
 BEGIN
-    -- Performs tasks after ticket cancellation
+    -- Implementation details
+    -- Handles post-cancellation operations:
+    -- - Seat status updates
+    -- - RAC/WL management
+    -- - Payment processing
 END;
 ```
 
-e) after_ticket_cancellation
-Purpose: Additional cancellation handling
+#### 5. after_ticket_cancellation
 ```sql
 CREATE TRIGGER after_ticket_cancellation
 AFTER UPDATE ON tickets
 FOR EACH ROW
 BEGIN
-    -- Additional cancellation handling tasks
+    -- Implementation details
+    -- Updates booking history after cancellation:
+    -- - Cancellation status
+    -- - Refund amount
+    -- - Refund status
 END;
 ```
 
-f) UpdateRACStatus
-Purpose: Updates RAC (Reservation Against Cancellation) status
-```sql
-CREATE TRIGGER UpdateRACStatus
-AFTER UPDATE ON seatavailability
-FOR EACH ROW
-BEGIN
-    -- Trigger logic to update RAC status
-    -- Handles RAC to confirmed conversion
-END;
+## Setup Instructions
+
+1. Import the database schema:
+```bash
+mysql -u root -p < irctc_db_final.sql
 ```
 
-Note: These are the actual database objects found in the system. Each object serves a specific purpose in the IRCTC booking system, working together to ensure smooth ticket booking, cancellation, and management processes. The actual implementations contain detailed logic and error handling specific to the railway reservation system. 
+2. Configure database connection:
+- Update connection parameters in your application
+- Ensure proper permissions are set
+
+3. Test the system:
+- Run sample queries
+- Test procedures and functions
+- Verify trigger operations
+
+## Notes
+- All procedures, functions, and triggers are implemented in the `mini_irctc1` schema
+- The system uses MySQL 8.0 or higher
+- Proper error handling is implemented in all database objects
+- Transaction management is handled at the application level 
