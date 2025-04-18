@@ -18,7 +18,7 @@ A Python implementation of the classic Connect4 game featuring an AI opponent wi
 
 ## Installation
 
-1. Clone the repository:
+**1. Clone the repository:**
 ```bash
 git clone https://github.com/arbitcoper/Connect4.git
 ```
