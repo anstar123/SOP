@@ -23,7 +23,7 @@ A Python implementation of the classic Connect4 game featuring an AI opponent wi
 git clone https://github.com/arbitcoper/Connect4.git
 ```
 
-### 2. Install the required packages:
+##### 2. Install the required packages:
 ```bash
 pip install pygame numpy
 ```
