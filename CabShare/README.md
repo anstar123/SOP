@@ -1,6 +1,6 @@
 # CabShare - Cab Sharing App for IIT Patna
 
-CabShare is a modern Android application designed to help IIT Patna students find and share cab rides with each other. The app facilitates ride sharing between the campus and various transportation hubs like Patna Station, Bihta Station, and Patna Airport.
+CabShare is a modern Android application designed to help IIT Patna students find and share cab rides with each other. The app facilitates ride sharing between the campus and various the most frequent destinations including Patna Junction, Patna Airport and Bihta Railway Station.
 
 ## Features
 
@@ -11,25 +11,19 @@ CabShare is a modern Android application designed to help IIT Patna students fin
 
 - 🚗 **Ride Management**
   - Create and join cab rides
-  - Support for both train and flight connections
   - Real-time ride status updates
-  - Passenger management system
   - Ride request and approval system
 
 - 📱 **User Interface**
-  - Modern Material Design 3 UI
-  - Dark/Light theme support
   - Intuitive navigation
-  - Real-time notifications
-  - Responsive layout
+  - Real-time notifications tab
 
 - 🔄 **Real-time Features**
   - Live ride updates
-  - Instant notifications for ride requests
   - Real-time passenger list updates
   - Automatic ride cleanup for past rides
 
-## Technical Stack
+## Tech Stack
 
 - **Language**: Kotlin
 - **UI Framework**: Jetpack Compose
@@ -53,7 +47,7 @@ CabShare is a modern Android application designed to help IIT Patna students fin
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/CabShare.git
+   git clone https://github.com/EshanBhaskar/CabShare.git
    cd CabShare
    ```
 
@@ -118,11 +112,3 @@ If you encounter dependency resolution issues:
    - `com.microsoft.device:display-mask:0.4.0`
    - `io.opentelemetry:opentelemetry-api:1.18.0`
    - `io.opentelemetry:opentelemetry-sdk:1.18.0`
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For support, please open an issue in the GitHub repository or contact the development team.
