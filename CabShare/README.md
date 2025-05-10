@@ -4,21 +4,21 @@ CabShare is a modern Android application designed to help IIT Patna students fin
 
 ## Features
 
-- 🔐 **Secure Authentication**
+- **Secure Authentication**
   - Microsoft Authentication with @iitp.ac.in email restriction
   - Secure user profile management
   - Automatic session management
 
-- 🚗 **Ride Management**
+- **Ride Management**
   - Create and join cab rides
   - Real-time ride status updates
   - Ride request and approval system
 
-- 📱 **User Interface**
+- **User Interface**
   - Intuitive navigation
   - Real-time notifications tab
 
-- 🔄 **Real-time Features**
+- **Real-time Features**
   - Live ride updates
   - Real-time passenger list updates
   - Automatic ride cleanup for past rides
