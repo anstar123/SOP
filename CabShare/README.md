@@ -1,6 +1,6 @@
 # CabShare - Cab Sharing App for IIT Patna
 
-CabShare is a modern Android application designed to help IIT Patna students find and share cab rides with each other. The app facilitates ride sharing between the campus and various the most frequent destinations including Patna Junction, Patna Airport and Bihta Railway Station.
+CabShare is a modern Android application designed to help IIT Patna students find and share cab rides with each other. The app facilitates ride sharing between the campus and some of the most frequent destinations (Patna Junction, Patna Airport and Bihta Railway Station) and vice-versa.
 
 ## Features
 
@@ -27,7 +27,6 @@ CabShare is a modern Android application designed to help IIT Patna students fin
 
 - **Language**: Kotlin
 - **UI Framework**: Jetpack Compose
-- **Architecture**: MVVM (Model-View-ViewModel)
 - **Authentication**: Microsoft Authentication Library (MSAL)
 - **Backend**: Firebase
 - **Background Tasks**: WorkManager
