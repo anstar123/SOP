@@ -1,5 +1,12 @@
 # Connect4 Game with AI
 
+## Team Members:
+- [Ankesh Kumar](https://www.github.com/arbitcoper)
+- [Eshan Bhaskar](https://www.linkedin.com/in/eshan-bhaskar)
+- [Krishan Kumawat](https://www.linkedin.com/in/krishan-kumawat)
+- [Neetish Kumar](https://www.linkedin.com/in/neetish-kumar)
+- [Raushan Raj](https://www.linkedin.com/in/raushan-raj)
+
 A Python implementation of the classic Connect4 game featuring an AI opponent with multiple difficulty levels.
 
 ## Features
@@ -80,3 +87,4 @@ The AI uses an A* inspired heuristic function that considers:
 - `main.py`: Main game loop and GUI implementation
 - `board.py`: Board logic and game rules
 - `ai_agent.py`: AI implementation with different strategies
+
